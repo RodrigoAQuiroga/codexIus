@@ -1,0 +1,288 @@
+/*Sections*/
+body {
+    margin: 0;
+    color: #f3f5fc;
+    background-color: #282C34;
+}
+
+
+header,
+nav {
+    padding: 1rem;
+}
+
+header {
+    background-color: #16161d;
+    color: #FFA07A;
+    padding: 2rem;
+    text-align: center;
+}
+
+nav {
+    border-bottom: solid 2px;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    display: flex;   
+    justify-content: end;
+    flex-wrap: wrap;
+    background-color: #2F3439;
+    padding: 1rem 2rem;
+    border: solid 2px #FFA07A;
+    border-radius: 0 1rem;
+    margin: 1rem;
+}
+
+nav h3 {
+    margin: 0;
+    padding: 1rem;
+    color: #FFA07A;
+    text-align: center;
+}
+
+nav a {
+    margin: 0.5rem;
+    display: block;
+}
+
+main {
+    background-color: #F3F5FC;
+    margin-bottom: 10rem;
+}
+
+main p,
+main span {
+    text-indent: 1.5rem;
+    line-height: 1.8rem;
+    padding: 1rem 2rem;
+}
+
+main h3 {
+    color: #FFA07A;
+    text-align: center;
+    background-color: #2F3439;
+    padding: 1rem;
+    margin: 0;
+}
+
+footer {   
+    margin-top: 1rem;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #2F3439;
+    width: 100%;
+    overflow-x: auto;
+}
+
+footer div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+footer p {
+    text-wrap: nowrap;
+}
+
+footer a {
+    text-wrap: nowrap;
+    margin: 1rem;
+}
+
+
+/*Tags*/
+* {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #16161d;
+    box-sizing: border-box;
+    scroll-margin-top: 5rem;
+}
+
+h1 {
+    color: #F3F5FC;
+}
+
+h2 {
+    color: orange;
+}
+
+h3 {
+    color: #F3F5FC;
+    background-color: #16161d;
+    padding: 2rem;
+}
+
+h4 {
+    padding: 0.5rem 1rem;
+
+
+}
+
+a {
+    flex-grow: 1;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 1rem;
+    border-bottom: solid 2px #0A3871;
+    display: inline-block;
+    margin: 0 0.5rem;
+    text-wrap: balance;
+    max-width: fit-content;
+}
+
+a:hover {
+    font-weight: bold;
+    border-bottom: solid 2px;
+    color: #61AFEF;
+}
+
+
+a::after {
+    content: url(../sources/icons/box-arrow-up-right.svg);
+    margin: 0.5rem;
+
+}
+
+section {
+    scroll-margin-top: 5rem;
+    scroll-behavior: smooth;
+}
+
+details {
+    margin: 1rem;
+    border: solid 1px #16161d;
+    border-radius: 0.4rem;
+
+}
+
+summary {
+    list-style-type: none;
+    font-weight: bold;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+p {
+    text-indent: 0.5rem;
+    text-align: justify;
+}
+
+
+/**/
+
+#home {
+    position: sticky;
+    top: 0;
+    background-color: #2F3439;
+    text-align: center;
+}
+
+#home a {
+    display: block;
+    text-align: center;
+    color: #FFA07A;
+}
+
+
+#buscador {
+    flex-direction: column;
+    padding: 0;
+    margin: 0 1rem
+}
+
+input {
+    padding: 0.3rem 1rem;
+    background-color: inherit;
+    border: none;
+    border-bottom: solid 2px #61AFEF;
+    text-align: center;
+    color: #f3f5fc;
+}
+
+input::placeholder {
+    color: #f3f5fc;
+}
+
+#spn {
+    color: #FFA07A;
+    padding: 0 1rem;
+    margin: 0;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+
+
+#container {
+    border-left: solid 1px #FFA07A;
+    padding: 0 1rem;
+}
+
+#container button {
+    background-color: inherit;
+    color: #FFA07A;
+    border: none;
+    padding: 1rem;
+    margin: 0 1rem;
+}
+
+#container button:hover {
+    cursor: pointer;
+    font-weight: bold;
+    color: #61AFEF;
+}
+
+p:target::before,
+h3:target::before,
+.found::before {
+    content: "# ";
+    font-weight: 900;
+    font-size: x-large;
+    color: #FFA07A;
+}
+
+.found {
+    border-top: dotted 2px #61AFEF;
+    padding-top: 1.5rem;
+}
+
+span {
+    color: #FFA07A;
+    font-weight: bold;
+    display: block;
+    font-style: italic;
+}
+
+span::before {
+    content: "!!! - ";
+    font-size: larger;
+
+}
+
+p::selection,
+span::selection,
+b::selection {
+    color: #FFA07A;
+    background-color: #2F3439;
+}
+
+
+
+.top {
+    background-color: #282C34;
+    color: #FFA07A;
+}
+
+.top::after,
+#spn::after,
+#home a::after {
+    content: none;
+}
+#highlight {
+    background-color: #ffa07a99;
+    scroll-margin-top: 10rem;
+    color: #282C34;
+}

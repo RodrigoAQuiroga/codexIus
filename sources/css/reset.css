@@ -1,0 +1,85 @@
+#highlight {
+    background-color: #ffa07a99;
+    scroll-margin-top: 10rem;
+    color: #282C34;
+}
+
+* {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    color: #f3f5fc;
+    background-color: #282C34;
+    margin: 0;
+}
+
+header, h3, h4 {
+    background-color: #16161d;
+    color: #FFA07A;
+    padding: 2rem;
+    text-align: center;
+}
+
+
+main {
+    margin-bottom: 10rem;
+    padding: 2rem;
+}
+main p {
+    text-indent: 1.5rem;
+    line-height: 1.8rem;
+    padding: 1rem 2rem;
+}
+
+nav {
+    position: fixed;
+    bottom: 0;   
+    text-align: center;
+    background-color: #16161d;
+    width: 100%;
+    
+}
+
+
+
+input {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+}
+
+button {
+    background-color: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    color: #FFA07A;
+    border: none;
+    padding: 1rem;
+    border-bottom: solid 1px;
+    margin: 1rem;
+}
+
+
+
+#indice{
+    height: 25dvh;
+    overflow: auto;
+    background-color: #16161d;
+    color: #ffff;
+    padding: 2rem;
+}
+
+dt{
+    color: #FFA07A;
+    text-align: center;
+    margin: 1rem;
+    font-weight: bold;
+}
+
+a{
+    color: #FFA07A;
+    padding: 1rem;   
+    font-weight: bold;  
+    text-decoration: none;
+}
