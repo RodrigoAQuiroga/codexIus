@@ -20,10 +20,11 @@ footer {
 
 nav {
     text-align: end;
+    background-color: #16161d;
 }
 
 main h3 {
-    background-color: #2F3439;
+    background-color: #16161d;
     color: #FFA07A;
     padding: 1rem 1.5rem;
     padding-left: 2rem;
@@ -32,6 +33,7 @@ main h3 {
 
 header {
     color: #FFA07A;
+    background-color: #16161d;
 }
 
 p {
@@ -74,7 +76,7 @@ a:hover {
     border: solid 2px #424950;
     margin: 1.5rem;
     border-radius: 1rem 0;
-    background-color: #282C34;
+    background-color: #16161d;
 }
 
 .card_docs h4 {
@@ -104,10 +106,13 @@ section h3 {
 details {
     padding: 1rem;
     margin: 1rem;
-    background-color: #2F3439;
+    background-color: #16161d;
     text-align: center;
     border: solid 2px #FFA07A;
     border-radius: 1rem 0;
+}
+details:hover{
+    background-color: #282C34;
 }
 
 details input {
@@ -139,6 +144,7 @@ summary {
     padding: 1rem;
     cursor: pointer;
     font-size: larger;
+    
 }
 summary img{
     width: 2rem;

@@ -1,5 +1,5 @@
 #highlight {
-    background-color: #ffa07a99;
+    background-color: #FFA07A;
     scroll-margin-top: 10rem;
     color: #282C34;
 }
@@ -13,19 +13,47 @@ body {
     background-color: #282C34;
     margin: 0;
 }
-
-header, h3, h4 {
-    background-color: #16161d;
+h1{
     color: #FFA07A;
+}
+
+header,
+h3,
+h4 {
+    background-color: #16161d;   
     padding: 2rem;
     text-align: center;
 }
+
+h3{
+    color: #FFA07A;
+    margin: 0;
+}
+h4{
+    color: #61AFEF;
+}
+
+header a,
+nav a {
+    padding: 0.5rem;
+    border: solid #FFA07A 1px;
+    border-radius: 0.5rem;
+    margin: 1rem;
+    display: block;
+    background-color: #282C34;
+}
+
+header a:hover, nav a:hover{
+    border: solid #FFA07A 1px;
+}
+
 
 
 main {
     margin-bottom: 10rem;
     padding: 2rem;
 }
+
 main p {
     text-indent: 1.5rem;
     line-height: 1.8rem;
@@ -34,12 +62,13 @@ main p {
 
 nav {
     position: fixed;
-    bottom: 0;   
+    bottom: 0;
     text-align: center;
     background-color: #16161d;
     width: 100%;
-    
+
 }
+
 
 
 
@@ -62,24 +91,53 @@ button {
 
 
 
-#indice{
+#indice {
     height: 25dvh;
     overflow: auto;
     background-color: #16161d;
-    color: #ffff;
     padding: 2rem;
+    border-radius: 0.5rem;
 }
 
-dt{
+#indice, #indice div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#indice * {
+    margin: 0 1rem;
+}
+
+#indice h3 {
+    color: #FFA07A;
+}
+
+
+dt {
     color: #FFA07A;
     text-align: center;
     margin: 1rem;
     font-weight: bold;
 }
 
-a{
-    color: #FFA07A;
-    padding: 1rem;   
-    font-weight: bold;  
+a {
     text-decoration: none;
+    padding: 1rem;
+    text-wrap: balance;
+    display: inline-block;
+    border-bottom: solid 1px;
+    margin-right: 1rem;
+    color: inherit;    
+}
+
+a:hover {
+    font-weight: bold;
+    border-bottom: solid 2px;
+    color: #61AFEF;
+}
+a::after {
+    content: url(../icons/box-arrow-up-right.svg);
+    margin: 0.5rem;
+    
 }
