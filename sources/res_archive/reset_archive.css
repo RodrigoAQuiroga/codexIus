@@ -1,4 +1,4 @@
-@import "../../styles/reset_lex.css";
+@import '../../styles/reset.css';
 
 
 #index {
@@ -6,65 +6,6 @@
     flex-direction: column;
 }
 
-dd,
-li {
-    color: #f1f1f1;
-    border-left: solid 1px #FFA07A;
-    padding: 0.5rem;
-    margin: 1rem;
-    font-style: italic;
-}
-
-mark {
-    background-color: #FFA07A;
-    padding: 0 0.5rem;
-
-}
-
-dt {
-    color: #FFA07A;
-    font-weight: bold;
-}
-
-dl {
-    border-top: solid 1px #ccc;
-    border-bottom: solid 1px #ccc;
-    padding: 1rem;
-}
-
-p a,
-sup a {
-    color: #f1f1f1;
-    display: inline;
-    padding: 0;
-}
-
-details {
-    margin: 1rem 2rem;
-
-    cursor: pointer;
-    border: solid 1px #FFA07A;
-    border-radius: 1rem 0 0 1rem;
-    padding-top: 0;
-}
-
-summary {
-    list-style-type: none;
-    font-weight: bold;
-    padding: 1rem;
-    color: #f3f5fc;
-    border: solid 1px;
-    border-radius: 1rem 0 0 1rem;
-}
-
-summary:hover {
-    color: #61AFEF;
-}
-
-summary::before {
-    content: ">";
-    margin: 0.5rem;
-}
 
 details div:first-of-type {
     overflow: auto;
@@ -72,18 +13,6 @@ details div:first-of-type {
     padding: 1rem;
 }
 
-details[open] summary {
-    color: #FFA07A;
-}
-
-main {
-    margin: auto;
-}
-
-dd li {
-    border: none;
-    margin: 0;
-}
 
 i {
     font-weight: bold;
@@ -91,10 +20,14 @@ i {
 }
 
 
-h4 {
-    color: #61AFEF;
-    text-align: center;
-    background-color: #2F3439;
-    padding: 1rem;
-    margin: 0;
+
+dt{
+    color: #0066CC;
+    font-weight: bold;
+}
+dd{
+    margin: 1rem 0;
+}
+dd::before{
+    content: "- ";
 }

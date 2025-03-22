@@ -1,117 +1,27 @@
+@import url("../../styles/reset.css");
+
+
+
 #highlight {
-    background-color: #FFA07A;
+    background-color: #0066CC;
     scroll-margin-top: 10rem;
-    color: #282C34;
+    color: #f1f1f1;
+    font-weight: bold;
 }
-
-* {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-body {
-    color: #f3f5fc;
-    background-color: #282C34;
-    margin: 0;
-}
-h1{
-    color: #FFA07A;
-}
-
-header,
-h3,
-h4 {
-    background-color: #16161d;   
-    padding: 2rem;
-    text-align: center;
-}
-
-h3{
-    color: #FFA07A;
-    margin: 0;
-}
-h4{
-    color: #61AFEF;
-}
-
-header a,
-nav a {
-    padding: 0.5rem;
-    border: solid #FFA07A 1px;
-    border-radius: 0.5rem;
-    margin: 1rem;
-    display: block;
-    background-color: #282C34;
-}
-
-header a:hover, nav a:hover{
-    border: solid #FFA07A 1px;
-}
-
-
 
 main {
     margin-bottom: 10rem;
     padding: 2rem;
 }
 
-main p {
-    text-indent: 1.5rem;
-    line-height: 1.8rem;
-    padding: 1rem 2rem;
-}
-
 nav {
     position: fixed;
     bottom: 0;
+    margin-bottom: 0;
     text-align: center;
-    background-color: #16161d;
-    width: 100%;
-
-}
-
-
-
-
-input {
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    font-weight: bold;
-}
-
-button {
-    background-color: inherit;
-    font-weight: bold;
-    cursor: pointer;
-    color: #FFA07A;
-    border: none;
-    padding: 1rem;
-    border-bottom: solid 1px;
-    margin: 1rem;
-}
-
-
-
-#indice {
-    height: 25dvh;
-    overflow: auto;
-    background-color: #16161d;
     padding: 2rem;
-    border-radius: 0.5rem;
 }
 
-#indice, #indice div {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-#indice * {
-    margin: 0 1rem;
-}
-
-#indice h3 {
-    color: #FFA07A;
-}
 
 
 dt {
@@ -121,23 +31,20 @@ dt {
     font-weight: bold;
 }
 
-a {
-    text-decoration: none;
+h3,
+h4 {
+    display: block;
+    width: 100%;
+    margin: 1rem;
+    text-align: center;
+    background-color: #f2f2f2;
     padding: 1rem;
-    text-wrap: balance;
-    display: inline-block;
-    border-bottom: solid 1px;
-    margin-right: 1rem;
-    color: inherit;    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.213);
+    scroll-margin-top: 2rem;
 }
 
-a:hover {
-    font-weight: bold;
-    border-bottom: solid 2px;
-    color: #61AFEF;
-}
-a::after {
-    content: url(../icons/box-arrow-up-right.svg);
-    margin: 0.5rem;
-    
+h3:target,
+h4:target {
+    border: solid 1px;
+    box-shadow: 10px 10px 100px orange;
 }

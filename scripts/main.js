@@ -13,7 +13,7 @@ const searchInput = document.getElementById('search-input');
 
 searchInput.addEventListener('input', (e) => {
   const searchTerm = e.target.value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-  const contenedores = document.querySelectorAll('.contenedorLinks');
+  const contenedores = document.querySelectorAll('.divContainer_links');
 
   contenedores.forEach((contenedor) => {
     const links = contenedor.querySelectorAll('a');

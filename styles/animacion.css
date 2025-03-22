@@ -8,7 +8,7 @@
 
     30% {
         content: "aprender;";
-        color: orange;
+        color: #0066CC;
     }
 
     40% {
@@ -18,7 +18,7 @@
 
     50% {
         content: "enseñar;";
-        color: orange;
+        color: #0066CC;
     }
 
     60% {
@@ -28,7 +28,7 @@
     70%,
     80% {
         content: "servir;";
-        color: orange;
+        color: #0066CC;
     }
 
     90%,

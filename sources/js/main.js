@@ -27,9 +27,8 @@
          }
      }
 
-     document.getElementById("search-input").addEventListener("keyup", function() {
-         if (this.value.length > 0) {
-           currentIndex = 0;
-         }
-       });       
-     
+     document.getElementById("search-input").addEventListener("keyup", function(event) {
+        if (this.value.length > 0 && event.event.key !== 'Enter') { // Agregué event.keyCode !== 13
+          currentIndex = 0;
+        }
+      });
