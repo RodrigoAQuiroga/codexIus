@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../icons/icons8-temis-96 (1).png" type="image/x-icon">
+  <link rel="stylesheet" href="reset_archive.css">
+  <script src="../res_lex/script.js"></script>
+
+  <title>Quiz Dinámico con Array</title>
+  <style>
+    /*body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.5;
+    }*/
+
+   /* h1 {
+      color: #2c3e50;
+    }*/
+
+    .question {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+
+    .question h3 {
+      margin-top: 0;
+    }
+
+    .options label {
+      display: block;
+      margin: 6px 0;
+      cursor: pointer;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .correct {
+      color: #155724;
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+    }
+
+    .incorrect {
+      color: #721c24;
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+    }
+
+    .explanation {
+      margin-top: 8px;
+      font-weight: normal;
+      font-style: italic;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="inicio">
+    <h1>Preguntas de Autoevaluación</h1>
+    <h2>Hechos y Actos Jurídicos</h2>
+    <a href="../../index.html">Volver a la pagina principal</a>
+  </header>
+  <main>
+
+    <form id="quizForm"></form>
+  </main>
+  <script>
+    // Array con todas las preguntas, opciones, respuesta correcta y explicación
+    const quizQuestions = [
+      {
+        question: "¿Qué es un hecho jurídico según el artículo 257?",
+        answers: {
+          a: "Un acto voluntario ilícito.",
+          b: "Un acontecimiento que produce efectos jurídicos conforme al ordenamiento.",
+          c: "Una acción prohibida por la ley.",
+          d: "Un acto voluntario sin consecuencias jurídicas."
+        },
+        correctAnswer: "b",
+        explanation: "El artículo 257 define el hecho jurídico como un acontecimiento con efectos jurídicos."
+      },
+      {
+        question: "¿Cómo se define un simple acto lícito en el artículo 258?",
+        answers: {
+          a: "Una acción voluntaria prohibida por la ley.",
+          b: "Una acción involuntaria que genera consecuencias jurídicas.",
+          c: "Una acción voluntaria no prohibida por la ley que produce efectos jurídicos.",
+          d: "Un acto voluntario ilícito con efectos legales."
+        },
+        correctAnswer: "c",
+        explanation: "Según el artículo 258, el simple acto lícito es voluntario y lícito, y genera consecuencias jurídicas."
+      },
+      {
+        question: "¿Cuál es la característica principal del acto jurídico según el artículo 259?",
+        answers: {
+          a: "Es un acto involuntario.",
+          b: "Es un acto voluntario ilícito.",
+          c: "Es un acto voluntario lícito con fin inmediato de producir efectos jurídicos.",
+          d: "Es un acto sin intención."
+        },
+        correctAnswer: "c",
+        explanation: "El artículo 259 señala que el acto jurídico tiene por fin inmediato la adquisición, modificación o extinción de relaciones jurídicas."
+      },
+      {
+        question: "¿Qué requisitos debe cumplir un acto voluntario según el artículo 260?",
+        answers: {
+          a: "Discernimiento, intención y libertad.",
+          b: "Solo intención y libertad.",
+          c: "Discernimiento y coacción.",
+          d: "Libertad y falta de intención."
+        },
+        correctAnswer: "a",
+        explanation: "El artículo 260 establece estos tres requisitos esenciales para que un acto sea voluntario."
+      },
+      {
+        question: "Según el artículo 261, ¿cuándo se considera un acto involuntario?",
+        answers: {
+          a: "Cuando se realiza con intención y discernimiento.",
+          b: "Cuando falta el discernimiento, como en personas privadas de la razón o menores de cierta edad.",
+          c: "Cuando es un acto ilícito cometido por adultos.",
+          d: "Cuando es un acto lícito realizado por personas mayores de edad."
+        },
+        correctAnswer: "b",
+        explanation: "El artículo 261 especifica estas situaciones para actos involuntarios."
+      },
+      {
+        question: "¿De qué maneras pueden exteriorizarse los actos según el artículo 262?",
+        answers: {
+          a: "Solo por escrito.",
+          b: "Oralmente, por escrito, por signos inequívocos o por hechos materiales.",
+          c: "Solo por signos inequívocos.",
+          d: "Solo por hechos materiales."
+        },
+        correctAnswer: "b",
+        explanation: "El artículo 262 enumera estas formas de manifestación de la voluntad."
+      },
+      {
+        question: "¿El silencio siempre se considera manifestación de voluntad según el artículo 263?",
+        answers: {
+          a: "Sí, siempre.",
+          b: "No, excepto cuando hay un deber legal o convencional de expedirse.",
+          c: "No, nunca.",
+          d: "Solo cuando se da por escrito."
+        },
+        correctAnswer: "b",
+        explanation: "El artículo 263 establece esta excepción."
+      },
+      {
+        question: "¿Qué es una manifestación tácita de voluntad según el artículo 264?",
+        answers: {
+          a: "Una manifestación expresamente escrita.",
+          b: "Una manifestación que se conoce con certeza por actos, pero que puede carecer de eficacia si la ley exige expresión expresa.",
+          c: "Una manifestación oral obligatoria.",
+          d: "Una manifestación que siempre tiene eficacia legal."
+        },
+        correctAnswer: "b",
+        explanation: "Según el artículo 264, la manifestación tácita es válida salvo que se requiera expresión explícita."
+      },
+      {
+        question: "¿Cuál de los siguientes no es un requisito para que un acto sea considerado voluntario?",
+        answers: {
+          a: "Discernimiento.",
+          b: "Intención.",
+          c: "Libertad.",
+          d: "Coacción."
+        },
+        correctAnswer: "d",
+        explanation: "El artículo 260 indica que la libertad es necesaria, por lo que la coacción la elimina."
+      },
+      {
+        question: "¿Qué edad mínima se menciona para que un acto lícito de una persona menor pueda considerarse voluntario según el artículo 261?",
+        answers: {
+          a: "10 años.",
+          b: "13 años.",
+          c: "18 años.",
+          d: "21 años."
+        },
+        correctAnswer: "b",
+        explanation: "El artículo 261 distingue edades para actos involuntarios, señalando 13 años para actos lícitos."
+      },
+      {
+        question: "¿Qué efecto produce el error de hecho esencial según el artículo 265?",
+        answers: {
+          a: "Modificación del acto.",
+          b: "Nulidad del acto.",
+          c: "Ratificación del acto.",
+          d: "No produce efecto alguno."
+        },
+        correctAnswer: "b",
+        explanation: "El artículo 265 establece que el error de hecho esencial vicia la voluntad y provoca la nulidad del acto porque afecta la base misma del consentimiento."
+      },
+      {
+        question: "Para que el error de hecho cause nulidad en actos bilaterales o unilaterales recepticios, ¿qué requisito adicional debe cumplirse?",
+        answers: {
+          a: "Que sea grave.",
+          b: "Que sea reconocible por el destinatario.",
+          c: "Que sea accidental.",
+          d: "Que sea oculto."
+        },
+        correctAnswer: "b",
+        explanation: "En actos bilaterales o unilaterales recepticios, para que el error cause nulidad, debe ser reconocible para la otra parte, es decir, que esta pudo haberlo conocido en función de las circunstancias, evitando así abusos."
+      },
+      {
+        question: "Según el artículo 266, ¿cuándo es reconocible un error?",
+        answers: {
+          a: "Cuando el destinatario no puede conocerlo.",
+          b: "Cuando el destinatario pudo conocerlo según la naturaleza del acto y circunstancias.",
+          c: "Cuando el error es irrelevante para el acto.",
+          d: "Cuando el error es intencional."
+        },
+        correctAnswer: "b",
+        explanation: "El artículo 266 indica que el error es reconocible si la persona a quien se dirige la declaración de voluntad tenía la posibilidad de conocerlo, considerando el tipo de acto y el contexto."
+      },
+      {
+        question: "¿Cuál de los siguientes no es un supuesto de error esencial según el artículo 267?",
+        answers: {
+          a: "Error sobre la naturaleza del acto.",
+          b: "Error sobre la suma diversa a la querida.",
+          c: "Error sobre una cualidad accidental del bien.",
+          d: "Error sobre la persona con la cual se celebró el acto."
+        },
+        correctAnswer: "c",
+        explanation: "El error esencial recae sobre cualidades sustanciales o determinantes, no sobre cualidades accidentales o irrelevantes para la voluntad jurídica, según el artículo 267."
+      },
+      {
+        question: "¿Qué diferencia hay entre error de cálculo y error de hecho esencial según el artículo 268?",
+        answers: {
+          a: "El error de cálculo no da lugar a nulidad, solo a rectificación, salvo que sea determinante del consentimiento.",
+          b: "El error de cálculo siempre causa nulidad.",
+          c: "El error de cálculo no tiene ninguna consecuencia.",
+          d: "El error de cálculo siempre es esencial."
+        },
+        correctAnswer: "a",
+        explanation: "El artículo 268 diferencia el error de cálculo, que generalmente se corrige sin anular el acto, salvo que haya sido tan grave que haya condicionado el consentimiento."
+      },
+      {
+        question: "¿Qué establece el artículo 269 respecto a la subsistencia del acto cuando hay error?",
+        answers: {
+          a: "La parte que incurre en error siempre puede pedir nulidad.",
+          b: "La parte que incurre en error no puede pedir nulidad si la otra parte ofrece ejecutar el acto según la interpretación errada.",
+          c: "El acto se anula automáticamente.",
+          d: "El error no afecta la validez del acto."
+        },
+        correctAnswer: "b",
+        explanation: "Según el artículo 269, si la otra parte acepta cumplir el acto conforme a la idea equivocada, no procede la nulidad, promoviendo la estabilidad contractual."
+      },
+      {
+        question: "¿A qué se aplican las disposiciones del capítulo sobre error según el artículo 270?",
+        answers: {
+          a: "Solo al error en la voluntad.",
+          b: "Al error en la declaración de voluntad y en su transmisión.",
+          c: "Solo al error en la declaración escrita.",
+          d: "Solo al error en actos ilícitos."
+        },
+        correctAnswer: "b",
+        explanation: "El artículo 270 amplía la aplicación de las normas sobre error a errores cometidos tanto al declarar la voluntad como al transmitirla, cubriendo más situaciones."
+      },
+      {
+        question: "¿Qué es una acción dolosa según el artículo 271?",
+        answers: {
+          a: "Una aserción verdadera.",
+          b: "Una aserción falsa o disimulación de lo verdadero para celebrar el acto.",
+          c: "Una acción sin intención.",
+          d: "Una omisión involuntaria."
+        },
+        correctAnswer: "b",
+        explanation: "El artículo 271 define la acción dolosa como cualquier engaño o manipulación que induce a la otra parte a celebrar el acto bajo información falsa."
+      },
+      {
+        question: "¿Cuándo produce efectos la omisión dolosa?",
+        answers: {
+          a: "Nunca.",
+          b: "Cuando el acto no se habría realizado sin la reticencia u ocultación.",
+          c: "Siempre, sin importar el contexto.",
+          d: "Solo si es por escrito."
+        },
+        correctAnswer: "b",
+        explanation: "La omisión dolosa tiene efectos si la ocultación fue determinante para que la otra parte aceptara el acto, es decir, si sin esa omisión no se habría celebrado."
+      },
+      {
+        question: "¿Qué condiciones hacen que el dolo sea esencial según el artículo 272?",
+        answers: {
+          a: "Que sea leve y no determinante.",
+          b: "Que sea grave, determinante de la voluntad, cause daño importante y no haya dolo mutuo.",
+          c: "Que sea accidental.",
+          d: "Que sea reconocido solo por un tercero."
+        },
+        correctAnswer: "b",
+        explanation: "El artículo 272 señala que para que el dolo sea esencial y cause nulidad debe ser serio, influir en la decisión y no haber sido consentido por ambas partes."
+      },
+      {
+        question: "¿Qué efecto tiene el dolo incidental en la validez del acto según el artículo 273?",
+        answers: {
+          a: "Causa nulidad.",
+          b: "No afecta la validez del acto.",
+          c: "Modifica el contenido del acto.",
+          d: "Obliga a la reparación del daño."
+        },
+        correctAnswer: "b",
+        explanation: "El dolo incidental es un engaño menor que no influye en la voluntad decisiva, por lo que no invalida el acto (artículo 273)."
+      },
+      {
+        question: "¿Quiénes pueden ser autores del dolo esencial o incidental según el artículo 274?",
+        answers: {
+          a: "Solo una de las partes.",
+          b: "Solo un tercero.",
+          c: "Una de las partes o un tercero.",
+          d: "Ninguno de los anteriores."
+        },
+        correctAnswer: "c",
+        explanation: "El dolo puede ser cometido por cualquiera que intervenga en el acto, no solo por las partes directamente involucradas (artículo 274)."
+      },
+      {
+        question: "¿Quién responde por los daños causados por el dolo según el artículo 275?",
+        answers: {
+          a: "Solo el autor del dolo.",
+          b: "Solo la parte afectada.",
+          c: "El autor del dolo y solidariamente la parte que conoció el dolo de un tercero al momento del acto.",
+          d: "Ninguno."
+        },
+        correctAnswer: "c",
+        explanation: "La responsabilidad por daños recae en quien causó el dolo y en quien, sabiendo del dolo de un tercero, permitió que el acto se celebrara (artículo 275)."
+      },
+      {
+        question: "¿Qué causa la nulidad del acto según el artículo 276?",
+        answers: {
+          a: "Fuerza irresistible o amenazas que generen temor de mal grave e inminente que no se pueda evitar.",
+          b: "Solo amenazas verbales sin consecuencias.",
+          c: "Cualquier tipo de intimidación sin importar su gravedad.",
+          d: "La simple disconformidad con el acto."
+        },
+        correctAnswer: "a",
+        explanation: "El artículo 276 establece que la violencia física o amenazas serias que coarten la libertad de la persona invalidan el consentimiento y causan nulidad."
+      },
+      {
+        question: "¿Qué debe considerarse para juzgar la relevancia de las amenazas según el artículo 276?",
+        answers: {
+          a: "Solo la gravedad del acto.",
+          b: "La situación del amenazado y demás circunstancias del caso.",
+          c: "Solo la intención del autor.",
+          d: "Solo la edad de la víctima."
+        },
+        correctAnswer: "b",
+        explanation: "Para valorar la relevancia de las amenazas se debe considerar el contexto personal y las condiciones específicas del amenazado, no solo la amenaza en abstracto."
+      },
+      {
+        question: "¿Quién puede ser autor de la fuerza irresistible o amenazas según el artículo 277?",
+        answers: {
+          a: "Solo una de las partes del acto.",
+          b: "Solo un tercero.",
+          c: "Una de las partes o un tercero.",
+          d: "Ninguno."
+        },
+        correctAnswer: "c",
+        explanation: "La violencia puede ser ejercida por cualquiera que tenga influencia sobre el acto, ya sea parte directa o un tercero (artículo 277)."
+      },
+      {
+        question: "¿Qué responsabilidad tiene el autor de la fuerza irresistible o amenazas según el artículo 278?",
+        answers: {
+          a: "Ninguna.",
+          b: "Debe reparar los daños causados.",
+          c: "Solo responde si hubo dolo.",
+          d: "Solo responde la parte afectada."
+        },
+        correctAnswer: "b",
+        explanation: "El artículo 278 impone la obligación de indemnizar a quien haya causado daños mediante violencia o amenazas."
+      },
+      {
+        question: "¿Quién responde solidariamente por daños si conoció la fuerza o amenazas de un tercero al momento del acto según el artículo 278?",
+        answers: {
+          a: "Ninguna otra parte.",
+          b: "La parte que al tiempo de la celebración del acto tuvo conocimiento de la fuerza o amenazas del tercero.",
+          c: "Solo el autor del acto.",
+          d: "El juez."
+        },
+        correctAnswer: "b",
+        explanation: "Además del autor, responde solidariamente quien sabía de la violencia o amenazas y no impidió el acto, protegiendo así a la víctima (artículo 278)."
+      },
+      {
+        question: "¿Qué tipo de error no da lugar a nulidad sino a rectificación, salvo que sea determinante del consentimiento?",
+        answers: {
+          a: "Error de hecho esencial.",
+          b: "Error de cálculo.",
+          c: "Error sobre la persona.",
+          d: "Error incidental."
+        },
+        correctAnswer: "b",
+        explanation: "El error de cálculo es generalmente subsanable sin nulidad, salvo que afecte la voluntad de manera determinante (artículo 268)."
+      },
+      {
+        question: "¿Qué sucede si el error es reconocible por el destinatario en un acto bilateral?",
+        answers: {
+          a: "No tiene importancia.",
+          b: "Puede causar la nulidad del acto.",
+          c: "El acto se considera válido siempre.",
+          d: "El error se convierte en dolo."
+        },
+        correctAnswer: "b",
+        explanation: "Si el error es reconocible por el destinatario en actos bilaterales, este puede invalidar el acto porque afecta la base del consentimiento (artículo 265)."
+      },
+      {
+        question: "¿Cuál de las siguientes características NO debe tener el objeto del acto jurídico según el Artículo 279?",
+        answers: {
+          a: "Ser lícito y posible",
+          b: "Ser contrario a la moral",
+          c: "No ser lesivo de los derechos ajenos",
+          d: "No ser un bien prohibido por un motivo especial"
+        },
+        correctAnswer: "b",
+        explanation: "El objeto del acto jurídico no debe ser contrario a la moral, ni a las buenas costumbres, al orden público, ni lesivo de derechos ajenos o dignidad humana, ni ser un hecho imposible o prohibido por la ley (Artículo 279)."
+      },
+      {
+        question: "Según el Artículo 280, ¿qué sucede si un acto jurídico sujeto a plazo o condición suspensiva tiene un objeto inicialmente imposible?",
+        answers: {
+          a: "El acto es inválido en todos los casos",
+          b: "El acto es válido si el objeto se vuelve posible antes del plazo o condición",
+          c: "El acto es válido aunque el objeto siga siendo imposible",
+          d: "El acto se anula automáticamente"
+        },
+        correctAnswer: "b",
+        explanation: "El acto sujeto a plazo o condición suspensiva es válido aunque el objeto haya sido inicialmente imposible, si se vuelve posible antes del vencimiento o cumplimiento (Artículo 280)."
+      },
+      {
+        question: "¿Cómo define el Artículo 281 la causa del acto jurídico?",
+        answers: {
+          a: "Como el objeto del acto",
+          b: "Como el fin inmediato autorizado por el ordenamiento jurídico que determina la voluntad",
+          c: "Como la forma en que se exterioriza la voluntad",
+          d: "Como un hecho imposible o prohibido"
+        },
+        correctAnswer: "b",
+        explanation: "La causa es el fin inmediato autorizado por la ley que ha sido determinante de la voluntad, incluyendo motivos lícitos expresados o tácitos si son esenciales para ambas partes (Artículo 281)."
+      },
+      {
+        question: "Según el Artículo 282, ¿qué ocurre si la causa no está expresada en el acto jurídico?",
+        answers: {
+          a: "El acto es inválido automáticamente",
+          b: "Se presume que existe causa mientras no se pruebe lo contrario",
+          c: "El acto es nulo",
+          d: "La causa debe ser siempre expresada para que el acto sea válido"
+        },
+        correctAnswer: "b",
+        explanation: "Aunque la causa no esté expresada, se presume que existe mientras no se demuestre lo contrario; el acto es válido incluso si la causa expresada es falsa, siempre que haya otra causa verdadera (Artículo 282)."
+      },
+      {
+        question: "¿Qué establece el Artículo 283 respecto al acto abstracto?",
+        answers: {
+          a: "Que la causa debe ser siempre lícita y verdadera",
+          b: "Que la inexistencia, falsedad o ilicitud de la causa no pueden discutirse mientras no se haya cumplido el acto, salvo autorización legal",
+          c: "Que el acto es nulo si la causa es falsa",
+          d: "Que el acto no existe sin causa"
+        },
+        correctAnswer: "b",
+        explanation: "En el acto abstracto, la causa no puede ser discutida hasta que el acto se haya cumplido, salvo que la ley lo permita (Artículo 283)."
+      },
+      {
+        question: "¿Qué dice el Artículo 284 sobre la forma del acto jurídico?",
+        answers: {
+          a: "La forma siempre debe ser escrita",
+          b: "La ley impone una forma única para todos los actos",
+          c: "Las partes pueden elegir la forma que estimen conveniente si la ley no impone una forma determinada",
+          d: "La forma no es necesaria para la validez del acto"
+        },
+        correctAnswer: "c",
+        explanation: "Si la ley no designa una forma, las partes pueden usar la que quieran y pueden incluso acordar una forma más exigente que la legal (Artículo 284)."
+      },
+      {
+        question: "Según el Artículo 285, ¿qué ocurre si un acto no se otorga en la forma exigida por la ley?",
+        answers: {
+          a: "El acto es nulo automáticamente",
+          b: "El acto no queda concluido como tal hasta que se otorgue el instrumento previsto, pero obliga a cumplir la formalidad",
+          c: "El acto es válido sin más requisitos",
+          d: "El acto se considera inexistente"
+        },
+        correctAnswer: "b",
+        explanation: "El acto que no cumple la forma legal no se considera concluido, pero vale como obligación para cumplir la formalidad, salvo que la ley exija la forma bajo sanción de nulidad (Artículo 285)."
+      },
+      {
+        question: "¿Qué tipos de instrumentos escritos reconoce el Artículo 286?",
+        answers: {
+          a: "Solo instrumentos públicos",
+          b: "Solo instrumentos privados firmados",
+          c: "Instrumentos públicos y particulares, firmados o no, siempre que el contenido sea inteligible",
+          d: "Solo documentos electrónicos"
+        },
+        correctAnswer: "c",
+        explanation: "La expresión escrita puede ser por instrumentos públicos o particulares, firmados o no, en cualquier soporte con contenido inteligible, incluso si requiere medios técnicos para su lectura (Artículo 286)."
+      },
+      {
+        question: "¿Qué diferencia hay entre un instrumento privado y un instrumento particular no firmado según el Artículo 287?",
+        answers: {
+          a: "No hay diferencia, son lo mismo",
+          b: "El instrumento privado está firmado; el particular no firmado no tiene firma y puede incluir registros visuales o auditivos",
+          c: "El instrumento particular no firmado es más válido que el privado",
+          d: "El instrumento privado no necesita firma"
+        },
+        correctAnswer: "b",
+        explanation: "Los instrumentos privados están firmados; los particulares no firmados no tienen firma e incluyen escritos no firmados, impresos, registros visuales o auditivos, etc. (Artículo 287)."
+      },
+      {
+        question: "¿Qué función cumple la firma en un instrumento según el Artículo 288?",
+        answers: {
+          a: "Solo es decorativa",
+          b: "Prueba la autoría de la declaración de voluntad expresada en el texto",
+          c: "Es necesaria solo en documentos públicos",
+          d: "Puede ser cualquier dibujo sin relación con el firmante"
+        },
+        correctAnswer: "b",
+        explanation: "La firma prueba la autoría de la declaración de voluntad en el texto y debe consistir en el nombre o signo del firmante; en documentos electrónicos, la firma digital cumple esta función (Artículo 288)."
+      }
+    ];
+
+
+    const quizForm = document.getElementById('quizForm');
+
+    // Función para construir el quiz dinámicamente
+    function buildQuiz() {
+      const output = [];
+
+      quizQuestions.forEach((currentQuestion, index) => {
+        const answers = [];
+        for (const letter in currentQuestion.answers) {
+          answers.push(
+            `<label>
+              <input type="radio" name="question${index}" value="${letter}" />
+              ${letter}) ${currentQuestion.answers[letter]}
+            </label>`
+          );
+        }
+
+        output.push(
+          `<div class="question" data-question-index="${index}">
+            <h3>${currentQuestion.question}</h3>
+            <div class="options">${answers.join('')}</div>
+            <div class="feedback" id="feedback-question${index}"></div>
+          </div>`
+        );
+      });
+
+      quizForm.innerHTML = output.join('');
+    }
+
+    // Función para manejar la selección y mostrar feedback
+    function handleAnswerSelection(event) {
+      if (event.target.matches('input[type="radio"]')) {
+        const input = event.target;
+        const questionIndex = input.name.replace('question', '');
+        const selectedValue = input.value;
+        const feedbackDiv = document.getElementById(`feedback-question${questionIndex}`);
+        const correctAnswer = quizQuestions[questionIndex].correctAnswer;
+        const explanation = quizQuestions[questionIndex].explanation;
+
+        switch (selectedValue) {
+          case correctAnswer:
+            feedbackDiv.innerHTML = `<div class="correct">Respuesta correcta.</div>`;
+            break;
+          default:
+            feedbackDiv.innerHTML = `<div class="incorrect">
+              Respuesta incorrecta.<br/>
+              Respuesta correcta: <strong>${correctAnswer}) ${quizQuestions[questionIndex].answers[correctAnswer]}</strong>.<br/>
+              <span class="explanation">${explanation}</span>
+            </div>`;
+            break;
+        }
+      }
+    }
+
+    // Construir el quiz al cargar la página
+    buildQuiz();
+
+    // Escuchar cambios en el formulario para detectar selección de respuestas
+    quizForm.addEventListener('change', handleAnswerSelection);
+  </script>
+
+</body>
+
+</html>

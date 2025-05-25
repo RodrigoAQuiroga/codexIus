@@ -7,12 +7,6 @@
 }
 
 
-details div:first-of-type {
-    overflow: auto;
-    max-height: 50dvh;
-    padding: 1rem;
-}
-
 
 i {
     font-weight: bold;
@@ -26,8 +20,9 @@ dt{
     font-weight: bold;
 }
 dd{
-    margin: 1rem 0;
+    border-left: solid 1px #ccc;
 }
-dd::before{
-    content: "- ";
+
+ul{
+    margin-left: 2rem;
 }

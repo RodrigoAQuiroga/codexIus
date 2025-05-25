@@ -1,3 +1,10 @@
 {
-    "livePreview.defaultPreviewPath": "/sources/res_archive/ecotax.html"
+    "livePreview.defaultPreviewPath": "/sources/res_archive/ecotax.html",
+    "cSpell.words": [
+        "escribanía",
+        "Graficación",
+        "graficar",
+        "registración"
+    ],
+    "liveServer.settings.port": 5501
 }
