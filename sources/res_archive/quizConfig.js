@@ -1,33 +1,28 @@
+// Importación estática de los datos de los quizzes
+import { privado, minero } from './quizData_Minero.js';
+
 const quizForm = document.getElementById('quizForm');
 const themeSelect = document.getElementById('themeSelect');
-
 
 let allQuestions = [];
 let quizGroups = [];
 
-async function loadQuizData(theme) {
-  try {
-    // Mapear la opción a la ruta del archivo JS
-   const modulePathMap = {
-  privado: '/sources/res_archive/forArchive/quizData_privado.js',
-  minero: '/sources/res_archive/forArchive/quizData_minero.js'
+// Mapeo de temas a los datos importados
+const quizDataMap = {
+  privado,
+  minero
 };
 
-  const path = modulePathMap[theme];
-
-    if (!path) {
-      throw new Error('Tema no encontrado');
-    }
-
-    // Importar dinámicamente el módulo
-    const module = await import(path);
-    quizGroups = module.quizGroups;
-    allQuestions = quizGroups.flatMap(group => group.questions);
-
-    buildQuiz();
-  } catch (error) {
-    quizForm.innerHTML = `<p>Error cargando las preguntas: ${error.message}</p>`;
+function loadQuizData(theme) {
+  if (!quizDataMap[theme]) {
+    quizForm.innerHTML = `<p>Tema no encontrado</p>`;
+    return;
   }
+
+  quizGroups = quizDataMap[theme];
+  allQuestions = quizGroups.flatMap(group => group.questions);
+
+  buildQuiz();
 }
 
 function buildQuiz() {
@@ -82,8 +77,8 @@ function handleAnswerSelection(event) {
       feedbackDiv.innerHTML = `<div class="correct"><p>Respuesta correcta.</p></div>`;
     } else {
       feedbackDiv.innerHTML = `<div class="incorrect">
-       <p> Respuesta incorrecta.</p>
-       <p> Respuesta correcta: <strong>${correctAnswer}) ${currentQuestion.answers[correctAnswer]}</strong>.</p>
+       <p>Respuesta incorrecta.</p>
+       <p>Respuesta correcta: <strong>${correctAnswer}) ${currentQuestion.answers[correctAnswer]}</strong>.</p>
         <p class="explanation">${explanation}</p>
       </div>`;
     }
