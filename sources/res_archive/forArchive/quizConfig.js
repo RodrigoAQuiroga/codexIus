@@ -1,19 +1,20 @@
 const quizForm = document.getElementById('quizForm');
 const themeSelect = document.getElementById('themeSelect');
 
+
 let allQuestions = [];
 let quizGroups = [];
 
 async function loadQuizData(theme) {
   try {
     // Mapear la opción a la ruta del archivo JS
-    const modulePathMap = {
-      privado: './quizData_privado.js',
-      minero: './quizData_minero.js'
-      // agrega más si tienes otros archivos
-    };
+   const modulePathMap = {
+  privado: '/sources/res_archive/forArchive/quizData_privado.js',
+  minero: '/sources/res_archive/forArchive/quizData_minero.js'
+};
 
-    const path = modulePathMap[theme];
+  const path = modulePathMap[theme];
+
     if (!path) {
       throw new Error('Tema no encontrado');
     }
