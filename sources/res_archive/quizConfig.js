@@ -1,5 +1,5 @@
 // Importación estática de los datos de los quizzes
-import { privado, minero } from './quizData_Minero.js';
+import { privado, minero } from './quizData.js';
 
 const quizForm = document.getElementById('quizForm');
 const themeSelect = document.getElementById('themeSelect');
