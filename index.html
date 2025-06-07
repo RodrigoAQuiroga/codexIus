@@ -5,16 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal de Educación Jurídica</title>
-    <link rel="stylesheet" href="./styles/reset.css">
-    <link rel="stylesheet" href="./styles/animacion.css">
+    <link rel="stylesheet" href="./styles/reset.css">    
     <link rel="shortcut icon" href="./sources/icons/fav.png" type="image/x-icon">
 </head>
 
-<body>
+<body id="top">
 
     <header>
-        <img src="./sources/icons/temis.png">
-        <h1>Codex_Ius: </h1>
+        <h1>Codex_Ius: <span id="animated-text">aprender;</span></h1>
+
         <h2>Portal de Educación Jurídica</h2>
     </header>
     <nav>
@@ -24,8 +23,9 @@
         <a href="#appsJuridicas">Apps Jurídicas</a>
     </nav>
     <main>
+
+
         <article id="recomendaciones">
-            <h3><img src="./sources/icons/home.png"> Recomendaciones</h3>
             <div class="divContainer">
                 <a href="./sources/res_archive/quizzes.html">Tests de Autoevaluación</a>
                 <a href="./sources/res_lex/cn.html">Constitución Nacional</a>
@@ -38,148 +38,24 @@
                     de respuesta al delito - 26/09/2017</a>
                 <a href="https://drive.google.com/file/d/1i8xF9AFIhN2lA9e7CQmIlpyzm9srZhqN/view?usp=drive_link">Critica
                     al Sistema Penal - 15/09/2021</a>
-                 
+
             </div>
         </article>
         <article id="legislacion">
-            <h3><img src="./sources/icons/legislacion.png" alt="legislación"> Legislación</h3>
             <details>
-                <summary>Buscador de leyes <img
-                    src="./sources/icons/search.png"></summary>
+                <summary>Buscador de leyes</summary>
                 <input id="search-input" type="search" placeholder="Buscar...">
                 <div id="leyes" class="containerEnlaces"></div>
             </details>
 
         </article>
-        <article id="teoriaJuridica">
-            <h3><img src="./sources/icons/doctrina.png"> Teoría Jurídica</h3>
 
-            <section id="docs">
-                <h3>Monografías</h3>
+        <section id="teoriaJuridica">
+            <div id="cards-container"></div>
+        </section>
 
-
-                <div class="card_docs">
-                    <h4>Teoría de la atribución personal de comportamientos exigiblemente evitables -
-                        2018
-                    </h4>
-                    <p>Presentación de una técnica original que creé para interpretar e investigar tipos
-                        delictivos.
-                        La
-                        teoría de la atribución o TAPCEE para resumir, es una síntesis del trabajo de
-                        investigación
-                        que
-                        realice en 2017. Sé que tengo que cambiarle el nombre y es cuestionable pero en ese
-                        momento
-                        me
-                        pareció al menos útil para orientarse cuando estudiamos tipos penales.</p>
-                    <a href="https://drive.google.com/file/d/1w8NlkY3s4ycnHOV231op3DllBw9CYlOD/view?usp=drive_link">Abrir
-                        PDF...</a>
-
-                </div>
-
-
-                <div class="card_docs">
-                    <h4>Homicidio: Comentario según Cod. Penal</h4>
-                    <p>Un comentario original al tipo de homicidio simple según nuestro código penal. También
-                        sirve
-                        de
-                        practica para demostrar como aplicar la TAPCEE.</p>
-                    <a href="https://drive.google.com/file/d/1-2L7Sy4N149IQZX-CrL9ZIOy2f2oZ4pb/view?usp=drive_link">Abrir
-                        PDF...</a>
-
-                </div>
-
-                <div class="card_docs">
-                    <h4>Defraudaciones: Comentario según Cod. Penal</h4>
-
-                    <p>Comentario al artículo 176 y sus 16 incisos aplicando TAPCEE.</p>
-                    <a href="https://drive.google.com/file/d/1_t6bAjbZa35NgIvYkzOKZLWcAyrVkkfR/view?usp=drive_link">Abrir
-                        PDF...</a>
-
-                </div>
-
-                <div class="card_docs">
-                    <h4>Derecho Internacional Privado: Según Cod. Civ. Com,
-                        Tratados de Montevideo y CIDIPs</h4>
-                    <p>Comentario a la legislación internacional privada y ensayo de concordancias.</p>
-                    <a href="./sources/res_archive/dipr.html">Ir al sitio...</a>
-                </div>
-            </section>
-            <section id="reps">
-                <h3>Ensayos Académicos</h3>
-
-                <div class="card_docs">
-                    <h4>Ensayo de respuesta al delito - 26/09/2017</h4>
-                    <p>Muchas ciencias se han involucrado en la tarea de intentar explicar el delito y brindar
-                        algún
-                        tipo de solución, sin embargo hasta el día de hoy resulta un esfuerzo sin frutos. En
-                        este
-                        trabajo hago una reseña a algunas teorías que resultarían útiles considerar al momento
-                        de
-                        intentar abordar el fenómeno delictivo o al menos tratar de entender porque una persona
-                        decide
-                        cometer crímenes.</p>
-                    <a href="https://drive.google.com/file/d/1KfJPMLRufXMzQwv9zGgfPLJ45NzsULBR/view?usp=drive_link">Abrir
-                        PDF...</a>
-                </div>
-
-
-                <div class="card_docs">
-                    <h4>Critica al Sistema Penal - 15/09/2021</h4>
-                    <p>En el año 2019 hubo 1.765.932 hechos presuntamente delictivos denunciados y existían
-                        solamente
-                        100.634 personas detenidas, ¿Qué pasó con el otro 94.3% de casos? ¿Han tenido respuesta
-                        o
-                        aún no
-                        se ha hecho justicia? Lo que comenzó como un trabajo meramente estadístico o informativo
-                        terminó
-                        convirtiéndose en una denuncia de las irregularidades que se cometen en nuestro sistema
-                        penal.
-                        Además, aprovechó el espacio para investigar sobre la gestión estatal de la estadística
-                        criminal
-                        y los posibles cambios que deberíamos realizar</p>
-
-                    <a href="https://drive.google.com/file/d/1p0uVjgE-qW5_wzlft0q4Y7T3X5UhWN9m/view?usp=drive_link">Abrir
-                        PDF...</a>
-                </div>
-
-
-                <div class="card_docs">
-                    <h4>Derecho Penal Neurocriminal</h4>
-                    <p>¿Y si la respuesta al delito se lograse, al menos académicamente, mediante la creación de
-                        una
-                        nueva transdisciplina?</p>
-                    <a href="./sources/res_archive/dpnc.html">Ir al sitio...</a>
-                </div>
-
-
-
-                <div class="card_docs">
-                    <h4>Breve reflexión sobre el "Ecotributo"...</h4>
-                    <p>Ecotaxes o ecotributos, el nombre que se le da a lo que puede ser en apariencia una buena
-                        política de estado o una excusa ética para privarnos de nuestra propiedad injustamente.
-                        En
-                        este
-                        trabajo hago una breve reseña del fenómeno.</p>
-                    <a href="./sources/res_archive/ecotax.html">Ir al sitio...</a>
-
-                </div>
-
-                <div class="card_docs">
-                    <h4>Ética Judicial: Lineamientos - 27/12/2019</h4>
-                    <p>¿Quien juzga a quienes nos juzgan?... Resulta ser una pregunta que todos nos hemos hecho
-                        alguna
-                        vez y a pesar de que tenga respuesta constitucional, puede que no esté de mas
-                        cuestionarnos
-                        si
-                        es suficiente o considerar si resultaría útil juzgar la ética de quienes nos juzgan.</p>
-                    <a href="https://drive.google.com/file/d/1GI1o0qpAcoplAEkByewA6-KIb9kZYxSi/view?usp=drive_link">Abrir
-                        PDF...</a>
-                </div>
-                
-        </article>
         <article id="appsJuridicas">
-            <h3><img src="./sources/icons/apps.png"> Apps Jurídicas</h3>
+            <h3>Apps Jurídicas</h3>
             <section id="software">
                 <div class="card_docs">
                     <h4>Calculadora: Liquidación Final</h4>
@@ -195,14 +71,28 @@
     </main>
 
     <footer>
-        <div id="contacto">          
-            <h3>Contacto</h3>           
-            <p><b>Autor:</b> Quiroga Rodrigo Alberto</p>
-            <p> <b>Linkedin:</b> <a href="https://www.linkedin.com/in/rodrigo-quiroga/">Mi Perfil</a></p>
-            <p><b>GitHub:</b> <a href="https://github.com/RodrigoAQuiroga">Mi Repositorio</a></p>           
-            <p>Iconos extraidos desde: icons8.com.</p>
+        <div id="contacto" class="footer-container">
+            <h3>Contacto</h3>
+            <p><strong>Autor:</strong> Quiroga Rodrigo Alberto</p>
+            <p>
+                <strong>LinkedIn:</strong>
+                <a href="https://www.linkedin.com/in/rodrigo-quiroga/" target="_blank" rel="noopener noreferrer"
+                    aria-label="LinkedIn de Rodrigo Quiroga">
+                    <span class="icon-linkedin" aria-hidden="true"></span> Mi Perfil
+                </a>
+            </p>
+            <p>
+                <strong>GitHub:</strong>
+                <a href="https://github.com/RodrigoAQuiroga" target="_blank" rel="noopener noreferrer"
+                    aria-label="GitHub de Rodrigo Quiroga">
+                    <span class="icon-github" aria-hidden="true"></span> Mi Repositorio
+                </a>
+            </p>
+            <p class="footer-note">Iconos extraidos desde: <a href="https://icons8.com" target="_blank"
+                    rel="noopener noreferrer">icons8.com</a>.</p>
         </div>
     </footer>
+
 
     <script type="module" src="./scripts/main.js"></script>
 </body>

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../icons/icons8-temis-96 (1).png" type="image/x-icon">
     <link rel="stylesheet" href="reset_archive.css">
-    <script src="../res_lex/script.js"></script>
+
     <title>Ecotaxes</title>
 </head>
 
@@ -17,7 +17,7 @@
         <h2>Particularidades del "Ecotax"</h2>
         <a href="../../index.html">Volver a la pagina principal</a>
     </header>
-   
+
     <main>
         <article>
             <h3>Breve reflexión sobre el "Ecotributo"...- Creación: 22/06/2022</h3>
@@ -605,26 +605,12 @@
                 </div>
             </details>
 
-            
+
         </article>
 
     </main>
-    <script>
-        /*Funcion para details*/
-        const all_Details = document.querySelectorAll('details');
+<script type="module" src="../../scripts/mainArchive.js"></script>
 
-        all_Details.forEach(detail => {
-            detail.addEventListener('toggle', soloOpenOneDetail)
-        })
-
-        function soloOpenOneDetail() {
-            if (this.open) {
-                all_Details.forEach(detail => {
-                    if (detail != this && detail.open) detail.open = false
-                });
-            }
-        }
-    </script>
 </body>
 
 
